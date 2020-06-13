@@ -1,4 +1,5 @@
-class ErrorService {
+import {inputsAreValid} from "./validating-inputs"
+export class ErrorService {
   constructor() {
     this.errorBox = document.getElementById("error");
   }

@@ -1,4 +1,6 @@
-class CalculationService {
+import {parseInputs} from "./inputs-formatter";
+import {inputsAreValid} from "./validating-inputs";
+export class CalculationService {
   constructor() {
     this.numberOneInput = document.getElementById("numberOne");
     this.numberTwoInput = document.getElementById("numberTwo");
@@ -7,7 +9,7 @@ class CalculationService {
   getValues() {
     return [this.numberOneInput.value, this.numberTwoInput.value];
   }
-  calculations = (operation) => {
+  calculations(operation) {
     const inputs = this.getValues();
     const parsedInputs = parseInputs(...inputs);
     if (inputsAreValid(...parsedInputs)) {

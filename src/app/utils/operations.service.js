@@ -1,4 +1,4 @@
-class OperationService {
+export class OperationService {
   constructor() {
     this.addValuesButton = document.getElementById("addValues");
     this.subValuesButton = document.getElementById("subValues");
