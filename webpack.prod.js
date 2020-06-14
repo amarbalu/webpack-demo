@@ -4,7 +4,6 @@ const common=require("./webpack.config");
 const merge=require("webpack-merge");
 module.exports=merge(common,{
     mode:"production",
-    entry:path.resolve(__dirname,"src","app","app.js"),
     plugins:[
         new CleanWebpackPlugin({})
     ],
@@ -26,7 +25,7 @@ module.exports=merge(common,{
         ]
     },
     output:{
-        filename:"main.[ContentHash].js",
+        filename:"[name].[ContentHash].js",
         path:path.resolve(__dirname,"build")
     }
 })
