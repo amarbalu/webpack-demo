@@ -8,8 +8,25 @@ module.exports=merge(common,{
     plugins:[
         new CleanWebpackPlugin({})
     ],
+    module:{
+        rules:[
+            {
+                test:/\.html$/,
+                use:["html-loader"]
+            },{
+                test:/\.(svg|jgp|png)$/,
+                use:{
+                    loader:"file-loader",
+                options:{
+                    name:"[name].[hash].[ext]",
+                    outputPath:"assets"
+                }
+            }
+            }
+        ]
+    },
     output:{
-        filename:"main.js",
+        filename:"main.[ContentHash].js",
         path:path.resolve(__dirname,"build")
     }
 })
