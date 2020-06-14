@@ -1,11 +1,13 @@
 const path =require("path");
 const {CleanWebpackPlugin}=require("clean-webpack-plugin");
+const MiniCssExtractPlugin =require("mini-css-extract-plugin")
 const common=require("./webpack.config");
 const merge=require("webpack-merge");
 module.exports=merge(common,{
     mode:"production",
     plugins:[
-        new CleanWebpackPlugin({})
+        new CleanWebpackPlugin({}),
+        new MiniCssExtractPlugin({filename:"[name].[ContentHash].css"})
     ],
     module:{
         rules:[
@@ -21,7 +23,11 @@ module.exports=merge(common,{
                     outputPath:"assets"
                 }
             }
-            }
+            },
+            {
+                test:/\.css$/,
+                use:[MiniCssExtractPlugin.loader,"css-loader"]
+                }
         ]
     },
     output:{
