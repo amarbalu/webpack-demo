@@ -1,6 +1,8 @@
 const path =require("path");
 const {CleanWebpackPlugin}=require("clean-webpack-plugin");
-const MiniCssExtractPlugin =require("mini-css-extract-plugin")
+const MiniCssExtractPlugin =require("mini-css-extract-plugin");
+const OptimizeCssAssetsWebpackPlugin =require("optimize-css-assets-webpack-plugin");
+const TerserWebpackPlugin=require("terser-webpack-plugin")
 const common=require("./webpack.config");
 const merge=require("webpack-merge");
 module.exports=merge(common,{
@@ -9,6 +11,9 @@ module.exports=merge(common,{
         new CleanWebpackPlugin({}),
         new MiniCssExtractPlugin({filename:"[name].[ContentHash].css"})
     ],
+    optimization:{
+        minimizer:[new OptimizeCssAssetsWebpackPlugin(),new TerserWebpackPlugin()]
+    },
     module:{
         rules:[
             {
