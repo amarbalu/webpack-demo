@@ -7,7 +7,7 @@ class CalculationService {
   getValues() {
     return [this.numberOneInput.value, this.numberTwoInput.value];
   }
-  calculations = (operation) => {
+  calculations(operation){
     const inputs = this.getValues();
     const parsedInputs = parseInputs(...inputs);
     if (inputsAreValid(...parsedInputs)) {
